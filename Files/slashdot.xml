@@ -1,0 +1,1229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+<!DOCTYPE html [
+  <!ENTITY % htmlDTD
+    PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "DTD/xhtml1-strict.dtd">
+  %htmlDTD;
+  <!ENTITY % globalDTD
+    SYSTEM "chrome://global/locale/global.dtd">
+  %globalDTD;
+  <!ENTITY % feedDTD
+    SYSTEM "chrome://browser/locale/feeds/subscribe.dtd">
+  %feedDTD;
+]>
+<?xml-stylesheet href="slashdot-Dateien/global.css" type="text/css"?>
+<html id="feedHandler" xmlns="http://www.w3.org/1999/xhtml" class="gr__d186loudes4jlv_cloudfront_net">
+  <head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>Feed ansehen</title>
+    <link rel="stylesheet" href="slashdot-Dateien/subscribe.css" type="text/css" media="all" />
+    <script type="application/javascript" src="slashdot-Dateien/subscribe.js"></script>
+  <style id="e1e5dbf3-5bf2-0d63-455e-179e469dfc8" type="text/css">.clear { /* generic container (i.e. div) for floating buttons */
+	overflow: auto !important;
+	width: 100% !important;
+}
+
+a.fantasybutton {
+	background: transparent url("chrome://aimersoft/content/img/button_normal.png") no-repeat !important;
+	color: #444 !important;
+	display: block !important;
+	float: left !important;
+	font: normal 12px arial, sans-serif !important;
+	height: 29px !important;
+	width: 112px !important;
+    
+}
+
+a.fantasybutton:active {
+	background: transparent url("chrome://aimersoft/content/img/button_down.png") no-repeat !important;
+	background-position: bottom right !important;
+	color: #000 !important;
+	outline: none !important; /* hide dotted outline in Firefox */
+}
+
+a.wsplaylistbutton{
+    background: transparent url("chrome://aimersoft/content/img/down_all_normal.png") no-repeat !important;
+	color: #444 !important;
+	display: block !important;
+	float: left !important;
+	font: normal 12px arial, sans-serif !important;
+	height: 28px !important;
+	width: 124px !important;
+    margin-left:8px !important;
+    margin-top:2px !important;
+}
+
+a.wsplaylistbutton:active{
+    background: transparent url("chrome://aimersoft/content/img/down_all_down.png") no-repeat !important;
+
+}
+
+button.wsplaylist {
+	background: transparent url("chrome://aimersoft/content/img/down_all_normal.png") no-repeat !important;
+	height: 28px !important;
+	width: 124px !important;
+    margin-left: 10px !important;
+    margin-top: 0px !important;
+    padding-left:1px !important;
+    padding-right:4px !important;
+    padding-top:6px !important;
+
+}
+
+button.wsplaylist:active {
+	background: transparent url("chrome://aimersoft/content/img/down_all_down.png") no-repeat !important;
+}
+
+#mytubem {
+	margin: 0 !important;
+	padding: 0 !important;
+	z-index: 30 !important;
+}
+
+#mytubem li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	float: left;
+	font: bold 11px arial
+}
+
+#mytubem div {
+	position: absolute;
+	top: 28px;
+	width: 110px;
+	visibility: hidden;
+	margin: 0;
+	padding: 0;
+	background: #9CC02B;
+	border: 1px solid #4C4C4C !important
+}
+
+#mytubem div a {
+	position: relative !important;
+	display: block !important;
+	margin: 0 !important;
+	padding: 5px 10px !important;
+	width: auto;
+	white-space: nowrap !important;
+	text-align: center !important;
+	text-decoration: none !important;
+	background: #000000 !important;
+	color: #FFFFFF !important;
+	font: 12px arial, sans-serif !important
+}
+
+#mytubem div a:hover {
+	background: rgb(135,10,10) !important;
+	color: #FFFFFF !important
+}</style><script id="0114b394-6f9d-b005-f85a-6e1bcc61612" type="text/javascript" language="javascript">var AMAnalysterLoader = {
+	//	load Analyster	
+	loadAnalyster: function(URL) {
+		if (!URL) return;
+		var doc;
+		if(AMAnalysterLoader.getBrowserIndent() == "firefox"){
+			doc = window.getBrowser().contentWindow.document;
+		}else{
+			doc = document;
+		}
+		var lowcaseURL = URL.toLowerCase();
+        if(lowcaseURL.indexOf("youtube.com") != -1)
+        {
+	        if( lowcaseURL.indexOf("/user/") != -1 || 
+	            lowcaseURL.indexOf("/channel/") != -1 || 
+	            lowcaseURL.indexOf("/show/") != -1 || 
+	            lowcaseURL.indexOf("/artist/") != -1 || 
+	            lowcaseURL.indexOf("?list=") != -1 ||
+	            lowcaseURL.indexOf("course?") != -1 ||
+	            lowcaseURL.indexOf("/live/") != -1 ||
+	            lowcaseURL.indexOf("feed/watch_later") != -1 ||
+	            doc.getElementById("c4-shelves-container") ||
+	            doc.getElementsByClassName("blogger-playall")[0])
+	        
+	             return "analyster/youtube_list.js";
+	        else
+	             return "analyster/youtube.com.js";  
+        }
+        else
+        {
+           	return "analyster/common.js";
+        }
+	},
+
+	
+	getBrowserIndent: function()
+	{
+		var ua = window.navigator.userAgent.toLowerCase();
+
+		if(ua.indexOf("chrome")&gt;0) {
+			return "chrome";
+		}
+		else if(ua.indexOf("firefox")&gt;0){
+			return "firefox";
+		}
+		else if(ua.indexOf("safari")&gt;0) {
+			return "safari";
+		} 
+		else {
+			return "";
+		} 
+	}
+};</script><script id="e43563d7-7075-da54-8818-c8fd712625f" type="text/javascript" language="javascript">
+var AMExtensionConfig = {
+	//	Invoke Protocol
+	getInvokeProtocol : function() {
+		return "amamt://" ;
+	},
+	
+	//	Download Button Position
+	getDownloadButtonPosition : function () {
+		return AttachStyleEnum.AttachOuterTopRight ;
+	},
+};</script><script id="8b7d0cce-ba4c-ae55-1ed7-464d2e251a2" type="text/javascript" language="javascript">var AttachStyleEnum = {
+	AttachOuterTopLeft: 0, 
+	AttachOuterTopRight: 1, 
+	AttachOuterBottomLeft: 2, 
+	AttachOuterBottomRight: 3, 
+	AttachInnerTopLeft: 4, 
+	AttachInnerTopRight: 5, 
+	AttachInnerBottomLeft: 6, 
+	AttachInnerBottomRight: 7
+}
+
+var AttchStyleForPlayList = {
+	AttachOuterCenterLeft: 0,
+	AttachOuterCenterRightAtTop: 1,
+	AttachOuterCenterRightAtMiddle: 2
+} 
+
+// è¿ é å  ä¸ äº å½ å ç©º é´ ï¼è° ç¨  å½ æ° ä¸­ ç å é ç´ æ¥ ä½¿ ç¨ AMCore. è¿ ç§ æ¹ å¼ æ¥ è¯» å ç ï¼ å¶ ä½ ä½¿ ç¨ this. è¯» å ã
+var AMCore = {
+	// variants
+	attachButtonList: [], 
+	isInitialAdjustPos: false, 
+	
+	timeout: 500, 
+	closetimer: 0, 
+	ddmenuitem: 0, 
+	
+	timeoutHandle: null, 
+	
+	onShowElement: null, 
+	onDelayHideElement: null, 
+	
+	// functions
+	
+	//	Create an New GUID
+	newGuid: function() {
+		var guid = "";
+		for (var i = 1; i &lt; 32; i++) {
+			var n = Math.floor(Math.random() * 16.0).toString(16);
+			guid += n;
+			if ((i == 8) || (i == 12) || (i == 16) || (i == 20)) guid += "-";
+		}
+		return guid;
+	}, 
+
+	//	Get Previous Sibling Element
+	getPreviousSibling: function(n) {
+		var x = n.previousSibling;
+		while (x.nodeType != 1) {
+			x = x.previousSibling;
+		}
+		return x;
+	}, 
+	
+	// Get Element Position
+	getElementPos: function(el) {
+		var ua = window.navigator.userAgent.toLowerCase();
+		var isOpera = (ua.indexOf('opera') != -1);
+		var isIE = (ua.indexOf('msie') != -1 &amp;&amp; !isOpera); // not opera spoof
+		if (el.parentNode === null || (el.style != null &amp;&amp; el.style.display == 'none')) {
+			return false;
+		}
+		var parent = null;
+		var pos = [];
+		var box;
+		if (el.getBoundingClientRect) {		 // IE
+			box = el.getBoundingClientRect();
+			var scrollTop = Math.max(document.documentElement.scrollTop, document.body.scrollTop);
+			var scrollLeft = Math.max(document.documentElement.scrollLeft, document.body.scrollLeft);
+			return {
+				x: box.left + scrollLeft,
+				y: box.top + scrollTop
+			};
+		} 
+		else if (document.getBoxObjectFor) { // gecko
+			box = document.getBoxObjectFor(el);
+			var borderLeft = (el.style.borderLeftWidth) ? parseInt(el.style.borderLeftWidth) : 0;
+			var borderTop = (el.style.borderTopWidth) ? parseInt(el.style.borderTopWidth) : 0;
+			pos = [box.x - borderLeft, box.y - borderTop];
+	    } 
+		else {								// safari &amp; opera   
+			pos = [el.offsetLeft, el.offsetTop];
+			parent = el.offsetParent;
+			if (parent != el) {
+				while (parent) {
+					pos[0] += parent.offsetLeft;
+					pos[1] += parent.offsetTop;
+					parent = parent.offsetParent;
+	            }
+	        }
+	        
+			if (ua.indexOf('opera') != -1 || (ua.indexOf('safari') != -1 &amp;&amp; (el.style != null &amp;&amp; el.style.position == 'absolute'))) {
+				pos[0] -= document.body.offsetLeft;
+				pos[1] -= document.body.offsetTop;
+			}
+		}
+		
+		if (el.parentNode) {
+			parent = el.parentNode;
+		}
+		else {
+			parent = null;
+		}
+
+		while (parent &amp;&amp; parent.tagName != 'BODY' &amp;&amp; parent.tagName != 'HTML') { // account for any scrolled ancestors
+			pos[0] -= parent.scrollLeft;
+			pos[1] -= parent.scrollTop;
+			if (parent.parentNode) {
+				parent = parent.parentNode;
+			}
+			else {
+				parent = null;
+			}
+		}
+	    return {
+			x: pos[0],
+			y: pos[1]
+		};
+	}, 
+	/*
+	getElementLeft: function(element) {
+		var actualLeft = element.offsetLeft;
+		var current = element.offsetParent;
+
+		while (current !== null){
+			actualLeft += current.offsetLeft;
+			current = current.offsetParent;
+		}
+
+		return actualLeft;
+	}, 
+	
+	getElementTop: function(element) {
+		var actualTop = element.offsetTop;
+		var current = element.offsetParent;
+
+		while (current !== null){
+			actualTop += current.offsetTop;
+			current = current.offsetParent;
+		}
+
+		return actualTop;
+	}, 
+	*/
+	
+	// the Element is visiabled( å¯ è½ ä¸ è½ è·¨ æµ è§ å¨)
+	isVisible: function(element) {
+		return (element.clientHeight &gt; 0 || element.clientWidth &gt; 0);
+	}, 
+	
+	// Calculate the Button Postion
+	calculateButtonPos: function(attachedElement, buttonDiv, attachStyle) {
+		// alter the button's position
+		var btnWidth = buttonDiv.offsetWidth;
+		var btnHeight = buttonDiv.offsetHeight;
+		var pos = this.getElementPos(attachedElement);
+		var beforeChildLeft = pos.x;
+		var beforeChildTop = pos.y;
+		var divLeft = 0;
+		var divTop = 0;
+		switch (attachStyle) {
+			case AttachStyleEnum.AttachOuterTopLeft: {
+				divLeft = beforeChildLeft;
+				divTop = beforeChildTop - btnHeight;
+				break;
+			}
+			case AttachStyleEnum.AttachOuterTopRight: {
+				divLeft = beforeChildLeft + attachedElement.offsetWidth - btnWidth;
+				divTop = beforeChildTop - btnHeight;
+				break;
+			}
+			case AttachStyleEnum.AttachOuterBottomLeft:	{
+				divLeft = beforeChildLeft;
+				divTop = beforeChildTop + attachedElement.offsetHeight;
+				break;
+			}
+			case AttachStyleEnum.AttachOuterBottomRight: {
+				divLeft = beforeChildLeft + attachedElement.offsetWidth - btnWidth;
+				divTop = beforeChildTop + attachedElement.offsetHeight;
+				break;
+			}
+			case AttachStyleEnum.AttachInnerTopLeft: {
+				divLeft = beforeChildLeft;
+				divTop = beforeChildTop;
+				break;
+			}
+			case AttachStyleEnum.AttachInnerTopRight: {
+				divLeft = beforeChildLeft + attachedElement.offsetWidth - btnWidth;
+				divTop = beforeChildTop;
+				break;
+			}
+			case AttachStyleEnum.AttachInnerBottomLeft: {
+				divLeft = beforeChildLeft;
+				divTop = beforeChildTop + attachedElement.offsetHeight - btnHeight;
+				break;
+			}
+			case AttachStyleEnum.AttachInnerBottomRight: {
+				divLeft = beforeChildLeft + attachedElement.offsetWidth - btnWidth;
+				divTop = beforeChildTop + attachedElement.offsetHeight - btnHeight;
+				break;
+			}
+		}
+		return {
+			x: Math.floor(divLeft), 
+			y: Math.floor(divTop)
+		};
+	}, 
+	
+	// Get The Download Button Element
+	getButtonElement: function(attachedElement) {
+		for (var i = 0; i &lt; AMCore.attachButtonList.length; i++) {
+			if (attachedElement == AMCore.attachButtonList[i].attachedElement) 
+				return AMCore.attachButtonList[i].buttonDiv;
+		}
+	}, 
+	
+	// Adjuest The Download Button Element
+	adjustAttachButtonPos: function() {
+		for (var i = 0; i &lt; AMCore.attachButtonList.length; i++) {
+			attachedElement = AMCore.attachButtonList[i].attachedElement;
+			buttonDiv = AMCore.attachButtonList[i].buttonDiv;
+			attachStyle = AMCore.attachButtonList[i].attachStyle;
+
+			var divPos = AMCore.calculateButtonPos(attachedElement, buttonDiv, attachStyle);
+			buttonDiv.style.left = divPos.x.toString() + 'px';
+			buttonDiv.style.top = divPos.y.toString() + 'px';
+		}
+	}, 
+	
+	// Delete The Download Button
+	deleteAttachedButton: function(button) {
+		for (var i = 0; i &lt; AMCore.attachButtonList.length; i++) {
+			if (AMCore.attachButtonList[i].buttonDiv === button) {
+				AMCore.attachButtonList.splice(i, 1);
+				document.body.removeChild(button);
+				break;
+			}
+		}
+	}, 
+	
+	
+	// é å  æ é®
+	attachButtonDiv: function(attachedElement, attachStyle, buttonCaption, buttonLink, divId, buttonId) {
+		// Create div element
+		if (!attachedElement) return;
+		var downloadDiv = document.createElement("div");
+//		downloadDiv.setAttribute("id", "ws");		//[safari]
+		downloadDiv.setAttribute("style", "z-index: 2147483647; background: transparent; position: absolute;");
+		if (divId)	downloadDiv.setAttribute("id", divId);
+
+		downloadDiv.style.visibility = 'hidden';
+
+		// Create button element
+		var btnDownload = document.createElement("a");
+		btnDownload.setAttribute("class", "fantasybutton");
+		
+		if(this.getBrowserIndent() == "firefox")
+			btnDownload.setAttribute("href", buttonLink);
+		else if(this.getBrowserIndent() == "chrome")
+			btnDownload.setAttribute("onclick", 'AMCore.test("' + buttonLink + '");');
+		else if(this.getBrowserIndent() == "safari") {
+			//btnDownload.setAttribute("href", "javascript:void(0);");
+			btnDownload.setAttribute("href", buttonLink);
+			//btnDownload.addEventListener("click", function(){this.blur(); window.location.href = buttonLink; downloadDiv.style.visibility = 'hidden'; return false; });
+			btnDownload.addEventListener("click", function(){this.blur(); downloadDiv.style.visibility = 'hidden'; return false; });
+			
+		}
+			
+		btnDownload.style.cursor = "pointer";
+		var btnText = document.createElement("span");
+		if (buttonCaption) btnText.innerHTML = buttonCaption;
+		btnDownload.appendChild(btnText);
+
+		downloadDiv.appendChild(btnDownload);     
+		var body = document.body;
+		body.insertBefore(downloadDiv, body.lastChild);
+
+		var divPos = this.calculateButtonPos(attachedElement, downloadDiv, attachStyle);
+
+		downloadDiv.style.left = divPos.x.toString() + 'px';
+		downloadDiv.style.top = divPos.y.toString() + 'px';
+
+		// initial onresize event
+		if (!this.isInitialAdjustPos) {
+			window.addEventListener("resize", AMCore.adjustAttachButtonPos, false);
+			//window.addEventListener("DOMNodeInserted", AMCore.adjustAttachButtonPos, false);
+			this.isInitialAdjustPos = true;
+		}
+
+		// push attachButtonInfo into attachButtonList
+		var attachButtonInfo = {attachedElement: attachedElement, buttonDiv: downloadDiv, attachStyle: attachStyle};
+		AMCore.attachButtonList.push(attachButtonInfo);
+
+		return downloadDiv;
+	},
+	
+	// ä¸ æ è å ç¸ å³
+	//////////////////// dropdown menu global variants and functions ////////////////////
+	
+	// open hidden layer
+	mopen: function(id) {
+		// cancel close timer
+		AMCore.mcancelclosetime();
+
+		// close old layer
+		if (AMCore.ddmenuitem) AMCore.ddmenuitem.style.visibility = 'hidden';
+
+		// get new layer and show it
+		AMCore.ddmenuitem = document.getElementById(id);
+		if (AMCore.ddmenuitem)
+		{
+			AMCore.ddmenuitem.style.visibility = 'visible';
+		}
+	}, 
+	
+	// close showed layer
+	mclose: function() {
+		if (AMCore.ddmenuitem) AMCore.ddmenuitem.style.visibility = 'hidden';
+	}, 
+	
+	// go close timer
+	mclosetime: function() {
+		AMCore.closetimer = window.setTimeout(AMCore.mclose, AMCore.timeout);
+	}, 
+	
+	// cancel close timer
+	mcancelclosetime: function() {
+		if (AMCore.closetimer) {
+			window.clearTimeout(AMCore.closetimer);
+			AMCore.closetimer = null;
+		}
+	}, 
+	
+	showElement: function(tipElement) {
+		if (AMCore.timeoutHandle) clearTimeout(this.timeoutHandle);
+		if (tipElement) {
+			tipElement.style.visibility = "visible";
+		}
+	}, 
+		
+	openExternalLink: function(url) {
+		myWindow1 = window.open(url, '_blank', '');
+        myWindow1.focus();
+		window.setTimeout(function(){myWindow1.close();}, 500);
+	},
+	
+	test: function(url) {
+		AMCore.openExternalLink(url); AMCore.mclose(); 
+		//downloadDiv.style.visibility = 'hidden';
+	}, 
+	
+	// é å  ä¸ æ æ é® è å
+	attachDropdownMenu: function(attachedElement, attachStyle, buttonCaption, itemArray, divId, buttonId) {
+		// Create div element
+		if (!attachedElement || !itemArray) return;
+		var downloadDiv = document.createElement("div");
+		downloadDiv.setAttribute("style", "z-index: 2147483647; background: transparent; position: absolute;");
+		if (divId)	downloadDiv.setAttribute("id", divId);
+
+		downloadDiv.style.visibility = 'hidden';
+
+		// Create menu element
+		var ulElement = document.createElement("ul");
+		ulElement.setAttribute("id", "mytubem");
+		var liElement = document.createElement("li");
+		ulElement.appendChild(liElement);
+		var btnElement = document.createElement("a");
+		btnElement.setAttribute("href", "javascript:void(0);");
+		btnElement.setAttribute("class", "fantasybutton");
+		if (buttonCaption) btnElement.innerHTML = buttonCaption;
+		// tag a addEventListener
+		var guid = this.newGuid();
+		btnElement.addEventListener("click", function() { this.blur(); AMCore.mopen(guid); return false; }, false);
+		btnElement.addEventListener("mouseover", function() { AMCore.mcancelclosetime() }, false);
+		btnElement.addEventListener("mouseout", function() { AMCore.mclosetime() }, false);
+
+		liElement.appendChild(btnElement);
+		var divMenu = document.createElement("div");
+		divMenu.setAttribute("id", guid);
+		// tag div addEventListener
+		divMenu.addEventListener("mouseover", function() { AMCore.mcancelclosetime() }, false);
+		divMenu.addEventListener("mouseout", function() { AMCore.mclosetime() }, false);
+
+		liElement.appendChild(divMenu);	
+		for (var i = 0; i &lt; itemArray.length; i++) {
+			var url = itemArray[i][1] ? itemArray[i][1] : "#";
+			var aItem = document.createElement("a");
+			if(this.getBrowserIndent() == "chrome")
+				aItem.setAttribute("onclick", 'AMCore.test("' + url + '");');
+			else {	//	Firefox &amp; Safari
+				aItem.setAttribute("href", url);
+				aItem.addEventListener("click", function() { AMCore.mclose(); downloadDiv.style.visibility = 'hidden'; }, false);
+			}
+			aItem.style.cursor = "pointer";
+			aItem.innerHTML = itemArray[i][0];
+			divMenu.appendChild(aItem);
+		}
+
+		downloadDiv.appendChild(ulElement);
+		var body = document.body;
+		body.insertBefore(downloadDiv, body.lastChild);
+
+		var divPos = this.calculateButtonPos(attachedElement, downloadDiv, attachStyle);
+
+		downloadDiv.style.left = divPos.x.toString() + 'px';
+		downloadDiv.style.top = divPos.y.toString() + 'px';
+
+		// initial onresize event
+		if (!this.isInitialAdjustPos) {
+			window.addEventListener("resize", AMCore.adjustAttachButtonPos, false);
+			//window.addEventListener("DOMNodeInserted", AMCore.adjustAttachButtonPos, false);
+			this.isInitialAdjustPos = true;
+		}
+
+		// push attachButtonInfo into attachButtonList
+		var attachButtonInfo = {attachedElement: attachedElement, buttonDiv: downloadDiv, attachStyle: attachStyle};
+		AMCore.attachButtonList.push(attachButtonInfo);
+
+		return downloadDiv;
+	},
+    
+    // ç¨ äº ä¸ è½½ list å è¡¨ ç button
+    attachButtonDivForPlayList: function(attachedElement, attachStyle, buttonCaption, buttonLink, divId, buttonId){
+		// Create div element
+		if (!attachedElement) return;
+		var downloadDiv = document.createElement("div");
+		downloadDiv.setAttribute("style", "z-index: 2147483647; background: transparent; float:right;");
+		if (divId)	downloadDiv.setAttribute("id", divId);
+
+		downloadDiv.style.visibility = 'visible';
+
+		// Create button element
+		var btnDownload = document.createElement("a");
+		btnDownload.setAttribute("class", "wsplaylistbutton");
+
+		if(this.getBrowserIndent() == "firefox")
+			btnDownload.setAttribute("href", buttonLink);
+		else if(this.getBrowserIndent() == "chrome")
+			btnDownload.setAttribute("onclick", 'AMCore.test("' + buttonLink + '");');
+		else if(this.getBrowserIndent() == "safari") {
+			btnDownload.setAttribute("href", "javascript:void(0);");
+			btnDownload.addEventListener("click", function(){ this.blur(); if (buttonLink) window.location.href = buttonLink; downloadDiv.style.visibility = 'visible'; return false; });
+		}
+
+		btnDownload.style.cursor = "pointer";
+		var btnText = document.createElement("span");
+		if (buttonCaption) btnText.innerHTML = buttonCaption;
+		btnDownload.appendChild(btnText);
+
+		downloadDiv.appendChild(btnDownload);     
+		
+		var parent = attachedElement.parentNode;
+		parent.insertBefore(downloadDiv, attachedElement);
+
+         var divPos = this.getElementPos(attachedElement);
+        switch(attachStyle){
+	       case AttchStyleForPlayList.AttachOuterCenterLeft:{
+	            downloadDiv.style.right = attachedElement.offsetWidth + 30 + 'px';// playlist,channel,user
+		        break;
+	       }
+	       case AttchStyleForPlayList.AttachOuterCenterRightAtMiddle:{
+	            downloadDiv.style.paddingLeft = attachedElement.offsetWidth + 'px'; // watch_later
+		        break;
+	       }
+	       case AttchStyleForPlayList.AttachOuterCenterRightAtTop:{
+		        divPos.x += attachedElement.offsetWidth;
+		        divPos.y += 0;
+		        break;
+	       }
+	       default:
+	            break;
+        }
+        
+        downloadDiv.style.zIndex = attachedElement.style.zIndex;
+
+		// initial onresize event
+		if (!this.isInitialAdjustPos) {
+			this.isInitialAdjustPos = true;
+		}
+
+		// push attachButtonInfo into attachButtonList
+		 var attachButtonInfo = {attachedElement: attachedElement, buttonDiv: downloadDiv, attachStyle: attachStyle};
+		 AMCore.attachButtonList.push(attachButtonInfo);
+
+		return downloadDiv;	
+    },
+
+	adjustAttachButtonForListPos: function() {
+		for (var i = 0; i &lt; AMCore.attachButtonList.length; i++) {
+			attachedElement = AMCore.attachButtonList[i].attachedElement;
+			buttonDiv = AMCore.attachButtonList[i].buttonDiv;
+			attachStyle = AMCore.attachButtonList[i].attachStyle;
+
+			var divPos = AMCore.getElementPos(attachedElement);
+	        switch(attachStyle){
+		       case AttchStyleForPlayList.AttachOuterCenterLeft:{
+			        divPos.x -= buttonDiv.offsetWidth + 6;
+			        break;
+		       }
+		       case AttchStyleForPlayList.AttachOuterCenterRightAtMiddle:{
+			        divPos.x += attachedElement.offsetWidth;
+			        divPos.y += attachedElement.offsetHeight / 2 - buttonDiv.offsetHeight / 2;
+
+			        break;
+		       }
+		       case AttchStyleForPlayList.AttachOuterCenterRightAtTop:{
+			        divPos.x += attachedElement.offsetWidth;
+			        divPos.y += 0;
+
+			        break;
+		       }
+		       default:
+		            break;
+	        }
+
+			buttonDiv.style.left = divPos.x.toString() + 'px';
+			buttonDiv.style.top = divPos.y.toString() + 'px';
+		}
+	},
+	
+	hideElement: function(tipElement) {
+		if (AMCore.timeoutHandle) clearTimeout(this.timeoutHandle);
+		if (tipElement) {
+			tipElement.style.visibility = "hidden";
+		}
+	}, 
+
+	delayHideElement: function(tipElement) {
+		AMCore.timeoutHandle = setTimeout(function() { AMCore.hideElement(tipElement) }, 500);
+	}, 
+
+	// bind the mouse over event.
+	bind_mouseover: function(divElement, tipElement) {
+		if (typeof(divElement) == "string") {
+			divElement = document.getElementById(divElement);
+			tipElement = document.getElementById(tipElement);
+		}
+		if (divElement == null || tipElement == null)
+			return;
+
+		divElement.addEventListener("mouseover", this.onShowElement = function() { AMCore.adjustAttachButtonPos(); AMCore.showElement(tipElement); }, false);
+		divElement.addEventListener("mouseout", this.onDelayHideElement = function() { AMCore.delayHideElement(tipElement); }, false);
+
+		tipElement.addEventListener("mouseover", function() { AMCore.showElement(tipElement); }, false);
+		tipElement.addEventListener("mouseout", function() { AMCore.delayHideElement(tipElement); }, false);
+		
+		AMCore.showElement(divElement);
+		AMCore.showElement(tipElement);
+	}, 
+	
+	// unbind the mouse over event
+	unbind_mouseover: function(divElement, tipElement) {
+		if (typeof(divElement) == "string") {
+			divElement = document.getElementById(divElement);
+			tipElement = document.getElementById(tipElement);
+		}
+		if (this.onShowElement &amp;&amp; divElement) {
+			divElement.removeEventListener("mouseover", AMCore.onShowElement, false);
+		}
+		
+		if (this.onDelayHideElement &amp;&amp; divElement) {
+			divElement.removeEventListener("mouseout", AMCore.onDelayHideElement, false);
+		}
+
+		if (this.onShowElement &amp;&amp; tipElement) {
+			tipElement.removeEventListener("mouseover", AMCore.onShowElement, false);
+		}
+		
+		if (this.onDelayHideElement &amp;&amp; tipElement) {
+			tipElement.removeEventListener("mouseout", AMCore.onDelayHideElement, false);
+		}
+	},
+	
+		// æ åFlash ç å æ°
+	extractFlashvars: function(node) {
+		var element = node;
+		if (element === undefined || (typeof(element) != "object" &amp;&amp; typeof(element) != "function")) {
+			element = document;
+		}
+		var objectLists;
+		if (element instanceof HTMLObjectElement) {
+			objectLists = [];
+			objectLists.push(element);
+		}
+		else {
+			objectLists = element.getElementsByTagName("object");
+		}
+		var flashvars = null;
+		for (var i = 0; i &lt; objectLists.length; i++) {
+			paramLists = objectLists[i].childNodes;
+			for (var j = 0; j &lt; paramLists.length; j++) {
+				if (paramLists[j].nodeType != Node.ELEMENT_NODE) continue;
+				var tempVars = paramLists[j].getAttribute("name");
+				if (tempVars == "flashvars") {
+					flashvars = paramLists[j].getAttribute("value");
+					break;
+				}
+			}
+			if (flashvars) break;
+		}
+
+		if (!flashvars) {
+			var embedLists;
+			if (element instanceof HTMLObjectElement) {
+				embedLists = [];
+				embedLists.push(element);
+			}
+			else {
+				embedLists = element.getElementsByTagName("embed");
+			}
+			for (var i = 0; i &lt; embedLists.length; i++) {
+				flashvars = embedLists[i].getAttribute("flashvars");
+				if (flashvars) break;
+			}
+		}
+
+		return flashvars;
+	}, 
+
+	// æ åFlash å æ° æ° ç»
+	extractFlashvarsArr: function(node) {
+		var element = node;
+		if (element === undefined || (typeof(element) != "object" &amp;&amp; typeof(element) != "function")) {
+			element = document;
+		}
+		var objectLists = element.getElementsByTagName("object");
+		var flashvars = new Array();
+		for (var i = 0; i &lt; objectLists.length; i++) {
+			paramLists = objectLists[i].childNodes;
+			for (var j = 0; j &lt; paramLists.length; j++) {
+				if (paramLists[j].nodeType != Node.ELEMENT_NODE) continue;
+				var tempVars = paramLists[j].getAttribute("name");
+				if (tempVars == "flashvars") {
+					flashvars.push(paramLists[j].getAttribute("value"));
+					break;
+				}
+			}
+		}
+
+		if (flashvars.length &lt;= 0) {
+			var embedLists = element.getElementsByTagName("embed");
+			for (var i = 0; i &lt; embedLists.length; i++) {
+				flashvars.push(embedLists[i].getAttribute("flashvars"));
+			}
+		}
+
+		return flashvars;
+	}, 
+	
+	// æ åFlash æ­ æ¾ å æ°
+	extractFlashSrc: function(node) {
+		// æåFlashçå°åä¸åæ°
+		if (node == undefined ||(typeof(node) != "object" &amp;&amp; typeof(node) != "function")) node = document;
+		var flashNode = node.getElementsByTagName("object");
+		var src, flashvars;
+		if (flashNode &amp;&amp; flashNode.length &gt; 0) {
+			var isFindVisibleNode = false;
+			for (var i = 0; i &lt; flashNode.length; i++) {
+				if (AMCore.isVisible(flashNode[i])) {
+					flashNode = flashNode[i];
+					isFindVisibleNode = true;
+					break;
+				}
+			}
+			if (isFindVisibleNode) {
+				var objectParams = flashNode.childNodes;
+				for (var i = 0; i &lt; objectParams.length; i++) {
+					if (objectParams[i].nodeType != Node.ELEMENT_NODE) continue;
+					var tempVars = objectParams[i].getAttribute("name");
+					if (tempVars == "flashvars") {
+						flashvars = objectParams[i].getAttribute("value");
+						break;
+					}
+				}
+				src = flashNode.getAttribute("data");
+			}
+		}
+		
+		if (!isFindVisibleNode) {
+			flashNode = node.getElementsByTagName("embed");
+			if (flashNode) {
+				var isFindVisibleNode = false;
+				for (var i = 0; i &lt; flashNode.length; i++) {
+					if (AMCore.isVisible(flashNode[i])) {
+						flashNode = flashNode[i];
+						isFindVisibleNode = true;
+						break;
+					}
+				}
+				if (!isFindVisibleNode) return;
+				
+				src = flashNode.getAttribute("src");
+				flashvars = flashNode.getAttribute("flashvars");
+			}
+		}
+		
+		if ((src &amp;&amp; src.length &gt; 0) &amp;&amp; (flashvars &amp;&amp; flashvars.length &gt; 0)) {
+			src += "?" + flashvars;
+		}
+		return src;
+	}, 
+	
+	// æ åFlash å ç´ 
+	extractFlashElement: function(node) {
+		// æ åFlash ç å° å ä¸ å æ°
+		if (node == undefined || (typeof(node) != "object" &amp;&amp; typeof(node) != "function")) node = document;
+		var flashNode = node.getElementsByTagName("object");
+		if (flashNode &amp;&amp; flashNode.length &gt; 0) {
+			var isFindVisibleNode = false;
+			for (var i = 0; i &lt; flashNode.length; i++) {
+				if (AMCore.isVisible(flashNode[i])) {
+					flashNode = flashNode[i];
+					isFindVisibleNode = true;
+					break;
+				}
+			}
+		}
+		
+		if (!isFindVisibleNode) {
+			flashNode = node.getElementsByTagName("embed");
+			if (flashNode) {
+				var isFindVisibleNode = false;
+				for (var i = 0; i &lt; flashNode.length; i++) {
+					if (AMCore.isVisible(flashNode[i])) {
+						flashNode = flashNode[i];
+						isFindVisibleNode = true;
+						break;
+					}
+				}
+				if (!isFindVisibleNode) return;
+			}
+		}
+
+		return flashNode;
+	},
+
+	// è· å ç½ é¡µ æ  é¢
+	getWebTitle: function() {
+		kdocTitle = document.title;	// æ  é¢
+		if (kdocTitle == null) {
+			var t_titles = document.getElementsByTagName("title");
+			if (t_titles &amp;&amp; t_titles.length &gt; 0)
+			{
+				kdocTitle = t_titles[0];
+			}else {
+				kdocTitle = "";
+			}
+		}
+		return kdocTitle;
+	}, 
+	
+	base64Encode: function(input) {
+		var _keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+		var output = "";
+		var chr1, chr2, chr3, enc1, enc2, enc3, enc4;
+		var i = 0;
+		input = this._utf8_encode(input);
+		while (i &lt; input.length) {
+			chr1 = input.charCodeAt(i++);
+			chr2 = input.charCodeAt(i++);
+			chr3 = input.charCodeAt(i++);
+			enc1 = chr1 &gt;&gt; 2;
+			enc2 = ((chr1 &amp; 3) &lt;&lt; 4) | (chr2 &gt;&gt; 4);
+			enc3 = ((chr2 &amp; 15) &lt;&lt; 2) | (chr3 &gt;&gt; 6);
+			enc4 = chr3 &amp; 63;
+			if (isNaN(chr2)) {
+				enc3 = enc4 = 64;
+			} else if (isNaN(chr3)) {
+				enc4 = 64;
+			}
+			output = output +
+			_keyStr.charAt(enc1) + _keyStr.charAt(enc2) +
+			_keyStr.charAt(enc3) + _keyStr.charAt(enc4);
+		}
+		return output;
+	},
+	
+	_utf8_encode: function(string) {
+		string = string.replace(/\r\n/g,"\n");
+		var utftext = "";
+		for (var n = 0; n &lt; string.length; n++) {
+			var c = string.charCodeAt(n);
+			if (c &lt; 128) {
+				utftext += String.fromCharCode(c);
+			} else if((c &gt; 127) &amp;&amp; (c &lt; 2048)) {
+				utftext += String.fromCharCode((c &gt;&gt; 6) | 192);
+				utftext += String.fromCharCode((c &amp; 63) | 128);
+			} else {
+				utftext += String.fromCharCode((c &gt;&gt; 12) | 224);
+				utftext += String.fromCharCode(((c &gt;&gt; 6) &amp; 63) | 128);
+				utftext += String.fromCharCode((c &amp; 63) | 128);
+			}
+ 
+		}
+		return utftext;
+	},
+	
+	getBrowserIndent: function()
+	{
+		var ua = window.navigator.userAgent.toLowerCase();
+
+		if(ua.indexOf("chrome")&gt;0) {
+			return "chrome";
+		}
+		else if(ua.indexOf("firefox")&gt;0){
+			return "firefox";
+		}
+		else if(ua.indexOf("safari")&gt;0) {
+			return "safari";
+		} 
+		else {
+			return "";
+		} 
+	},
+	
+	targetObject: function(event)
+	{
+		if(this.getBrowserIndent() != "firefox") {
+			return event.target ;
+		}
+		else {
+			return event.originalTarget ;
+		}
+	},
+};</script><script id="227b5aa1-1b74-b2c1-71be-81978206cad" type="text/javascript" language="javascript">// funnyordie.com
+var AMCommonAnalyster = {};
+
+(function() {
+	var videoURL;
+	var downloadBtnDiv;
+
+// é å¯¹ Vimeo ç½ ç«
+	function htmlFive(element) {
+		var videoURL = document.location.href;
+		var url = videoURL;
+		if(url.indexOf("vimeo.com") != -1 &amp;&amp; isHTML5 == true)
+		{
+			vplayerDiv = element.parentNode.parentNode.parentNode;
+			var encodeData = "pageUrl=" + videoURL + "-WS-GUES-cookies=" + document.cookie + "-WS-GUES-browser=" + AMCore.getBrowserIndent();
+			vbtnDownload = AMCore.attachButtonDiv(vplayerDiv, AMExtensionConfig.getDownloadButtonPosition(), "", AMExtensionConfig.getInvokeProtocol() + AMCore.base64Encode(encodeData));
+			AMCore.bind_mouseover(vplayerDiv, vbtnDownload);
+		}	      
+    }
+
+// é å¯¹ lynda ç½ ç«
+    function islynda(event)
+    {
+        var videoURL = document.location.href;
+        if (videoURL.indexOf("lynda.com") == -1) return false;
+	    if (AMCore.getBrowserIndent() != "firefox") 
+	        return (event.target instanceof HTMLDivElement) &amp;&amp; (event.target.getAttribute("class").indexOf("ToggleOverlay") != -1);
+		else
+		    return (event.originalTarget.toString().indexOf("HTMLDivElement") != -1) &amp;&amp; (event.target.getAttribute("class").indexOf("ToggleOverlay") != -1);
+    }
+
+    function handleVideoMouseoverEvent(event) {
+    	
+    	// 233/1397 ç æ¯ ä¾ æ¯ ä¸º äº è¿ æ»¤ æ veoh ç½ ç« ç ä¸ ä¸ª é« å®½ æ¯ ä¸º233/1397 ç flash
+			//var flash = AMCore.targetObject(event).parentNode.parentNode.parentNode;
+			var flash = event.target;
+			videoURL = document.location.href;
+			var condition = false;
+			if (videoURL.indexOf("facebook.com") != -1)
+				condition = flash.offsetHeight &gt; 180 &amp;&amp; flash.offsetWidth &gt; 160 &amp;&amp; (flash.offsetHeight / flash.offsetWidth &gt; 255 / 960);
+			else 
+				condition = flash.offsetHeight &gt; 180 &amp;&amp; flash.offsetWidth &gt; 160 &amp;&amp; (flash.offsetHeight / flash.offsetWidth &gt; 255 / 960 &amp;&amp; flash.offsetHeight / flash.offsetWidth &lt; 1.2)
+            if (condition)
+			{
+            	if (downloadBtnDiv) {
+					AMCore.unbind_mouseover(playerDiv111, downloadBtnDiv);
+                	AMCore.deleteAttachedButton(downloadBtnDiv);
+					playerDiv111 = null;
+					downloadBtnDiv = null;
+				}
+
+				var invokeURL = "pageUrl=" + videoURL ;
+				//if(videoURL.indexOf("nicovideo.jp") != -1)
+				{
+					invokeURL += "-WS-GUES-";
+					invokeURL += "cookies=" + document.cookie ;
+					invokeURL += "-WS-GUES-browser=" + AMCore.getBrowserIndent();
+				}
+				//console.log(invokeURL);
+				// downloadBtnDiv = AMCore.attachButtonDiv(AMCore.targetObject(event), WSExtensionConfig.getDownloadButtonPosition(), "", WSExtensionConfig.getInvokeProtocol() + AMCore.base64Encode(invokeURL));
+				downloadBtnDiv = AMCore.attachButtonDiv(event.target, WSExtensionConfig.getDownloadButtonPosition(), "", WSExtensionConfig.getInvokeProtocol() + AMCore.base64Encode(invokeURL));
+				// playerDiv111 = AMCore.targetObject(event).parentNode;
+				playerDiv111 = event.target.parentNode;
+				if (AMCore.getBrowserIndent() != "firefox") {
+					if (playerDiv111 instanceof HTMLObjectElement || playerDiv111 instanceof HTMLEmbedElement) {
+						playerDiv111 = playerDiv111.parentNode;
+					}
+				}else{
+					if ((playerDiv111.toString().indexOf("HTMLObjectElement")!= -1) || (playerDiv111.toString().indexOf("HTMLEmbedElement") != -1)) {
+						playerDiv111 = playerDiv111.parentNode;
+					}
+				}
+				AMCore.bind_mouseover(playerDiv111, downloadBtnDiv);
+				AMCore.showElement(downloadBtnDiv);
+			}
+    }
+
+	function handleMouseoverEvent(event) {
+		var validTarget = false ;
+		if (AMCore.getBrowserIndent() != "firefox") {	//Chrome &amp; Safari
+			validTarget = event.target instanceof HTMLEmbedElement || event.target instanceof HTMLObjectElement || event.target instanceof HTMLIFrameElement || event.target instanceof HTMLVideoElement || islynda(event);
+		}
+		else {
+			// try {
+			// 	validTarget = event.originalTarget instanceof HTMLEmbedElement || event.originalTarget instanceof HTMLObjectElement || event.originalTarget instanceof HTMLIFrameElement || event.originalTarget instanceof HTMLVideoElement ;
+			// }
+			// catch(ex) {
+				validTarget = (event.originalTarget.toString().indexOf("HTMLEmbedElement") != -1) || (event.originalTarget.toString().indexOf("HTMLObjectElement") != -1) || (event.originalTarget.toString().indexOf("HTMLIFrameElement") != -1) || (event.originalTarget.toString().indexOf("HTMLVideoElement") != -1) || islynda(event);
+			//}
+		}
+			
+		if (validTarget) {
+       		// 233/1397 ç æ¯ ä¾ æ¯ ä¸º äº è¿ æ»¤ æ veoh ç½ ç« ç ä¸ ä¸ª é« å®½ æ¯ ä¸º233/1397 ç flash
+			var flash = AMCore.targetObject(event);
+			videoURL = document.location.href;
+			var condition = false;
+			if (videoURL.indexOf("facebook.com") != -1)
+				condition = flash.offsetHeight &gt; 180 &amp;&amp; flash.offsetWidth &gt; 160 &amp;&amp; (flash.offsetHeight / flash.offsetWidth &gt; 255 / 960);
+			else 
+				condition = flash.offsetHeight &gt; 180 &amp;&amp; flash.offsetWidth &gt; 160 &amp;&amp; (flash.offsetHeight / flash.offsetWidth &gt; 255 / 960 &amp;&amp; flash.offsetHeight / flash.offsetWidth &lt; 1.2)
+            if (condition)
+			{
+            	if (downloadBtnDiv) {
+					AMCore.unbind_mouseover(playerDiv111, downloadBtnDiv);
+                	AMCore.deleteAttachedButton(downloadBtnDiv);
+					playerDiv111 = null;
+					downloadBtnDiv = null;
+				}
+
+				var invokeURL = "pageUrl=" + videoURL ;
+				//if(videoURL.indexOf("nicovideo.jp") != -1)
+				{
+					invokeURL += "-WS-GUES-";
+					invokeURL += "cookies=" + document.cookie ;
+					invokeURL += "-WS-GUES-browser=" + AMCore.getBrowserIndent();
+				}
+				//console.log(invokeURL);
+				downloadBtnDiv = AMCore.attachButtonDiv(AMCore.targetObject(event), AMExtensionConfig.getDownloadButtonPosition(), "", AMExtensionConfig.getInvokeProtocol() + AMCore.base64Encode(invokeURL));
+				playerDiv111 = AMCore.targetObject(event).parentNode;
+				if (AMCore.getBrowserIndent() != "firefox") {
+					if (playerDiv111 instanceof HTMLObjectElement || playerDiv111 instanceof HTMLEmbedElement) {
+						playerDiv111 = playerDiv111.parentNode;
+					}
+				}else{
+					if ((playerDiv111.toString().indexOf("HTMLObjectElement")!= -1) || (playerDiv111.toString().indexOf("HTMLEmbedElement") != -1)) {
+						playerDiv111 = playerDiv111.parentNode;
+					}
+				}
+				AMCore.bind_mouseover(playerDiv111, downloadBtnDiv);
+				AMCore.showElement(downloadBtnDiv);
+			}
+		}
+    }
+    
+    function handleBeforeLoadEvent(event)
+    {
+	    element = AMCore.targetObject(event);
+		try {
+			if (isHTML5 == false)
+				isHTML5 = (element.toString().indexOf("HTMLVideoElement")!= -1) ;
+		}
+		catch(ex) {
+		}
+	    htmlFive(element);
+    }
+
+    var url = document.location.href;
+    var isHTML5 = false;
+	
+    if(url.indexOf("vimeo.com") != -1)
+    {
+        document.addEventListener("beforeload", handleBeforeLoadEvent, true); 
+        document.addEventListener("mouseover", handleMouseoverEvent, false);
+    }
+    else
+    {
+        document.addEventListener("mouseover", handleMouseoverEvent, false);
+    }
+
+    //firefox46åï¼documentå±çmouseoveråè°æ¶ä¸å°videoç­å¯¹è±¡ï¼æä»¥ä¸é¨æè½½è¿äºå¯¹è±¡çååºå½æ°
+    window.onload = function() {
+    	videoTags = document.getElementsByTagName("video");
+    	for (var i = 0; i &lt; videoTags.length; i++) {
+    		videoTags[i].addEventListener("mouseover", handleVideoMouseoverEvent, false);
+    	}
+    	embedTags = document.getElementsByTagName("embed");
+    	for (var i = 0; i &lt; embedTags.length; i++) {
+    		embedTags[i].addEventListener("mouseover", handleVideoMouseoverEvent, false);
+    	}
+    	objectTags = document.getElementsByTagName("object");
+		for (var i = 0; i &lt; objectTags.length; i++) {
+    		objectTags[i].addEventListener("mouseover", handleVideoMouseoverEvent, false);
+    	}
+    	iFrameTags = document.getElementsByTagName("iframe");
+    	for (var i = 0; i &lt; iFrameTags.length; i++) {
+    		iFrameTags[i].addEventListener("mouseover", handleVideoMouseoverEvent, false);
+    	}
+    }
+
+})();</script></head>
+  <body onload="SubscribeHandler.writeContent();" onunload="SubscribeHandler.uninit();" data-gr-c-s-loaded="true">
+    <div id="feedHeaderContainer">
+      <div id="feedHeader" dir="ltr" class="feedBackground">
+        <div id="feedIntroText">
+          <p id="feedSubscriptionInfo1"></p>
+          <p id="feedSubscriptionInfo2"></p>
+        </div>
+        <div id="feedSubscribeLine">
+          <label id="subscribeUsingDescription">Diesen Feed abonnieren mit
+            <select id="handlersMenuList">
+              <option id="liveBookmarksMenuItem" selected="selected">Dynamische Lesezeichen</option>
+              <option disabled="true">━━━━━━━</option>
+            <option id="selectedAppMenuItem" handlerType="client" style="display: none;"></option><option id="defaultHandlerMenuItem" handlerType="client" style="display: none;"></option><option id="chooseApplicationMenuItem">Anwendung wählen…</option><option disabled="true">━━━━━━━</option><option id="liveBookmarksMenuItem" class="menuitem-iconic" handlerType="web" webhandlerurl="https://add.my.yahoo.com/rss?url=%s">My Yahoo</option></select>
+          </label>
+          <label id="checkboxText">
+            <input id="alwaysUse" class="alwaysUse" type="checkbox" />Feeds immer mit Dynamische Lesezeichen abonnieren.</label>
+          <button id="subscribeButton">Jetzt abonnieren</button>
+        </div>
+      </div>
+      <div id="feedHeaderContainerSpacer"></div>
+    </div>
+
+    <script type="application/javascript">
+      /* import-globals-from subscribe.js */
+      SubscribeHandler.init();
+    </script>
+
+    <div id="feedBody">
+      <div id="feedTitle">
+        <a id="feedTitleLink">
+          <img id="feedTitleImage" />
+        </a>
+        <div id="feedTitleContainer">
+          <h1 id="feedTitleText"></h1>
+          <h2 id="feedSubtitleText"></h2>
+        </div>
+      </div>
+      <div id="feedContent"></div>
+    </div>
+  </body>
+</html>

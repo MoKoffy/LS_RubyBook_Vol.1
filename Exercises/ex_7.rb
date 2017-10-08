@@ -1,0 +1,1 @@
+# main diff between hash and array: keys vs. indeces; no explicit order in a hash 

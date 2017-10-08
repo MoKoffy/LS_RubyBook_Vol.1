@@ -1,0 +1,1 @@
+# handles any errors thrown, and keeps the programm running (ideally). 
